@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 
 class PagerRouteAnimation extends PageRouteBuilder {
   final Widget routePageName;
+  final int? duration;
 
-  PagerRouteAnimation({required this.routePageName})
+  PagerRouteAnimation({required this.routePageName, this.duration})
       : super(
-          transitionDuration: const Duration(milliseconds: 700),
+          transitionDuration: Duration(milliseconds: duration ?? 700),
           pageBuilder: (BuildContext context, Animation<double> animation1,
               Animation<double> animation2) {
             return routePageName;
@@ -18,11 +19,7 @@ class PagerRouteAnimation extends PageRouteBuilder {
                 parent: animation1, curve: Curves.easeInOutQuint);
 
             return ScaleTransition(
-              // sizeFactor: animation1,
-              // axis: Axis.horizontal,
-              // axisAlignment: -1,
               scale: animation1,
-
               alignment: Alignment.center,
               child: widget,
             );

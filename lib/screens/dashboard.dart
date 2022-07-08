@@ -23,6 +23,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
         elevation: 0.0,
         backgroundColor: Colors.transparent,
       ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.transparent,
+        elevation: 0,
+        child: Container(
+          padding: EdgeInsets.all(40.0),
+          child: swipeButton(),
+        ),
+      ),
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
@@ -31,53 +39,47 @@ class _DashboardScreenState extends State<DashboardScreen> {
             borderRadius: BorderRadius.circular(20),
             color: Colors.transparent,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                children: [
-                  const SizedBox(height: 40),
-                  Row(
-                    children: [
-                      Container(
-                          height: 3, width: 80, color: AppColors.txtColor),
-                      const SizedBox(width: 10),
-                      const BasicTextStyling(text: "Vivek Jung Hamal"),
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                const SizedBox(height: 40),
+                Row(
+                  children: [
+                    Container(height: 3, width: 80, color: AppColors.txtColor),
+                    const SizedBox(width: 10),
+                    const BasicTextStyling(text: "Vivek Jung Hamal"),
+                  ],
+                ),
+                //introduction
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 40.0),
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const [
+                      BasicTextStyling(
+                          text: "Namaste, \n\nI am",
+                          fontSize: 40,
+                          fontWeight: FontWeight.w200),
+                      BasicTextStyling(
+                          text: "Vivek.",
+                          fontSize: 40,
+                          fontWeight: FontWeight.w400),
+                      BasicTextStyling(
+                          text: "I am an",
+                          fontSize: 40,
+                          fontWeight: FontWeight.w200),
+                      BasicTextStyling(
+                          text: "App Engineer.",
+                          fontSize: 40,
+                          fontWeight: FontWeight.w400),
                     ],
                   ),
-                  //introduction
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 40.0),
-                    width: MediaQuery.of(context).size.width,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: const [
-                        BasicTextStyling(
-                            text: "Namaste, \n\nMy name is",
-                            fontSize: 40,
-                            fontWeight: FontWeight.w200),
-                        BasicTextStyling(
-                            text: "Vivek.",
-                            fontSize: 40,
-                            fontWeight: FontWeight.w400),
-                        BasicTextStyling(
-                            text: "I am an",
-                            fontSize: 40,
-                            fontWeight: FontWeight.w200),
-                        BasicTextStyling(
-                            text: "App Engineer.",
-                            fontSize: 40,
-                            fontWeight: FontWeight.w400),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              //name
-              swipeButton(),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -95,7 +97,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       activeColor: AppColors.white,
       isFinished: isFinished,
       onWaitingProcess: () {
-        Future.delayed(const Duration(seconds: 1), () {
+        Future.delayed(const Duration(milliseconds: 100), () {
           setState(() {
             isFinished = true;
           });

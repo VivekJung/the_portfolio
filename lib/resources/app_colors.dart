@@ -4,7 +4,7 @@ class AppColors {
   static const Color basicMint = Color.fromARGB(255, 62, 180, 137);
   static Color lightMint = const Color.fromARGB(255, 91, 207, 165);
   static const Color mainMint = Color.fromARGB(255, 18, 88, 71);
-  static Color darkMint = const Color.fromARGB(255, 4, 49, 33);
+  static const Color darkMint = Color.fromARGB(255, 4, 49, 33);
   static Color dimWhite = const Color.fromARGB(255, 187, 187, 187);
   static const Color white = Color(0xffffffff);
   static const Color txtColor = Color(0xffffffff);

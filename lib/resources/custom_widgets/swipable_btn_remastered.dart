@@ -165,22 +165,24 @@ class SwipeableButtonViewRemasteredState
       height: 60,
       padding: const EdgeInsets.all(2.0),
       decoration: BoxDecoration(
-        border: Border.all(color: AppColors.white, width: 0.2),
+        border: Border.all(color: AppColors.white, width: 0.5),
         // color: widget.isActive ? widget.activeColor : widget.disableColor,
         borderRadius: BorderRadius.circular(50),
       ),
       child: Stack(
         children: [
-          Align(
-            alignment: Alignment.center,
-            child: Opacity(
-              opacity: opacity,
-              child: Text(
-                widget.buttonText!,
-                style: widget.buttontextstyle,
-              ),
-            ),
-          ),
+          widget.buttonText != null
+              ? Align(
+                  alignment: Alignment.center,
+                  child: Opacity(
+                    opacity: opacity,
+                    child: Text(
+                      widget.buttonText!,
+                      style: widget.buttontextstyle,
+                    ),
+                  ),
+                )
+              : Container(),
           !isAccepted
               ? SwipeableWidget(
                   isActive: widget.isActive,
